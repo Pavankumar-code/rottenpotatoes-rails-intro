@@ -30,12 +30,6 @@ class MoviesController < ApplicationController
     
     if params[:ratings]
       @ratings_filter = params[:ratings].keys
-    else
-      if session[:ratings]
-        @ratings_filter = session[:ratings]
-      else
-        @ratings_filter = @all_ratings
-      end
     end
     
     @movies = @movies.where('rating in (?)', @ratings_filter)
