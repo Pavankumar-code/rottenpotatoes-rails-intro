@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
     if @sort == 'title'
           @movies = @movies.order(@sort)
           @title_sort = 'hilite'
+          @title_sort = '.bg-warning'
     elsif @sort == 'release_date'
           @movies = @movies.order(@sort)
           @release_sort = 'hilite'
@@ -38,15 +39,11 @@ class MoviesController < ApplicationController
       session[:sort_by] = @sort
     end
     
-    
     if @ratings_filter!=session[:ratings]
       session[:ratings] = @ratings_filter
     end
     
     @movies = @movies.where('rating in (?)', @ratings_filter)
-    
-    
-
     
   end
   
