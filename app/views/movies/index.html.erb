@@ -6,7 +6,7 @@
   <%= rating %>
   <%= check_box_tag "ratings[#{rating}]", rating, if @ratings_filter; @ratings_filter.include?(rating) end, :id => "ratings_#{rating}" %>
   <% end %>
- <%= submit_tag 'Refresh', id: 'ratings_submit' %>
+ <%= submit_tag 'Refresh', id: 'ratings_submit %>
 <% end %>
 
 <%#  Part 1: Start here... %>
