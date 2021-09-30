@@ -16,11 +16,10 @@ class MoviesController < ApplicationController
       @sorting = session[:sort_by]
     end
     
-    case @sorting
-    when 'title'
+    if @sorting == 'title'
       @movies = @movies.order(@sorting)
       @sort_title = 'hilite'
-    when 'release_date'
+    elsif @sorting == 'release_date'
       @movies= @movies.order(@sorting) 
       @sort_release = 'hilite'
     end
