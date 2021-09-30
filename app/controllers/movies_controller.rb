@@ -18,9 +18,11 @@ class MoviesController < ApplicationController
     
     case @sorting
     when 'title'
-      @movies, @sort_title = @movies.order(@sorting), 'hilite'
+      @movies = @movies.order(@sorting)
+      @sort_title = 'hilite'
     when 'release_date'
-      @movies, @sort_release = @movies.order(@sorting), 'hilite'
+      @movies= @movies.order(@sorting) 
+      @sort_release = 'hilite'
     end
     
     if params[:ratings]
