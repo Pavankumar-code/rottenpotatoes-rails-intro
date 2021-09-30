@@ -18,11 +18,11 @@ class MoviesController < ApplicationController
     
     if @sort == 'title'
           @movies = @movies.order(@sort)
-          @title_sort = 'hilite'
-          @title_sort = '.bg-warning'
+          @sort_title = 'hilite'
+          @sort_title = '.bg-warning'
     elsif @sort == 'release_date'
           @movies = @movies.order(@sort)
-          @release_sort = 'hilite'
+          @sort_release = 'hilite'
     end
     
     if params[:ratings]
