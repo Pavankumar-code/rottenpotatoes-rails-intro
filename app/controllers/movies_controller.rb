@@ -8,8 +8,29 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    
+    if params[:sort_by]
+      @sorting = params[:sort_by]
+    else
+      @sorting = session[:sort_by]
+    end
+    
+    if @sorting!=session[:sort_by]
+      session[:sort_by] = @sorting
+    end
+    
+    if @sorting == 'title'
+      @movies = @movies.order(@sorting)
+      @title_sort = 'hilite'
+    elsif @sorting == 'release_date'
+      @movies = @movies.order(@sorting)
+      @release_sort = 'hilite'
+    end
+    
   end
+  
 
+  
   def new
     # default: render 'new' template
   end
