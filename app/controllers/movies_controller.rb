@@ -16,12 +16,11 @@ class MoviesController < ApplicationController
       @sorting = session[:sort_by]
     end
     
-    if @sorting == 'title'
-      @movies = @movies.order(@sorting)
-      @sort_title = 'hilite'
-    elsif @sorting == 'release_date'
-      @movies = @movies.order(@sorting)
-      @sort_release = 'hilite'
+    case @sorting
+    when 'title'
+      @movies, @sort_title = @movies.order(@sorting), 'hilite'
+    when 'release_date'
+      @movies, @sort_release = @movies.order(@sorting), 'hilite'
     end
     
     if params[:ratings]
@@ -30,7 +29,7 @@ class MoviesController < ApplicationController
       @ratings_filter = @all_ratings
     end
     
-    @movies = @movies.where('rating in (?)', @ratings_filter)
+    @movies = Movie.where('rating in (?)', @ratings_filter)
     
   end
   
