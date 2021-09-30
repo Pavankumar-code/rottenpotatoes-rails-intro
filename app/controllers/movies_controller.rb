@@ -30,11 +30,8 @@ class MoviesController < ApplicationController
       @ratings_filter = @all_ratings
     end
     
-    @movies = @movies.where('rating in (?)', @ratings_filter)
-    
   end
   
-
   
   def new
     # default: render 'new' template
