@@ -24,11 +24,24 @@ class MoviesController < ApplicationController
       @sort_release = 'hilite'
     end
     
+    if @ratings_filter!=session[:ratings]
+      session[:ratings] = @ratings_filter
+    end
+    
+    if @sorting!=session[:sort_by]
+      session[:sort_by] = @sorting
+    end
+    
     if params[:ratings]
       @ratings_filter = params[:ratings].keys
     else
-      @ratings_filter = @all_ratings
+      if session[:ratings]
+        @ratings_filter = session[:ratings]
+      else
+        @ratings_filter = @all_ratings
+      end
     end
+    
     
     @movies = Movie.where('rating in (?)', @ratings_filter)
     
