@@ -11,20 +11,16 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.all_ratings
     
     if params[:sort_by]
-      @sorting = params[:sort_by]
+      @sort = params[:sort_by]
     else
-      @sorting = session[:sort_by]
+      @sort = session[:sort_by]
     end
     
-    if @sorting!=session[:sort_by]
-      session[:sort_by] = @sorting
-    end
-    
-    if @sorting == 'title'
-          @movies = @movies.order(@sorting)
+    if @sort == 'title'
+          @movies = @movies.order(@sort)
           @title_sort = 'hilite'
-    elsif @sorting == 'release_date'
-          @movies = @movies.order(@sorting)
+    elsif @sort == 'release_date'
+          @movies = @movies.order(@sort)
           @release_sort = 'hilite'
     end
     
@@ -37,6 +33,11 @@ class MoviesController < ApplicationController
         @ratings_filter = @all_ratings
       end
     end
+    
+    if @sort!=session[:sort_by]
+      session[:sort_by] = @sort
+    end
+    
     
     if @ratings_filter!=session[:ratings]
       session[:ratings] = @ratings_filter
