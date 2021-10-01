@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     else
       @sort = session[:sort]
     end
-    frgrgegre
+    
     if @sort
       @movies = @movies.order(@sort)
     end
