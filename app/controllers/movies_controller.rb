@@ -32,8 +32,8 @@ class MoviesController < ApplicationController
       session[:sort] = @sort
     end
     
-    if @ratings_filter!=session[:ratings]
-      session[:ratings] = @ratings_filter
+    if @filter_rating!=session[:ratings]
+      session[:ratings] = @filter_rating
     end
     
     @movies = @movies.where('rating in (?)', @filter_rating)
