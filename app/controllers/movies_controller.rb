@@ -30,8 +30,8 @@ class MoviesController < ApplicationController
       end
     end
     
-    if @sort!=session[:sort_by]
-      session[:sort_by] = @sort
+    if @sort!=session[:sort]
+      session[:sort] = @sort
     end
     
     if @ratings_filter!=session[:ratings]
