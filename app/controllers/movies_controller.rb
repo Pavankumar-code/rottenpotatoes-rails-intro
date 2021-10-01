@@ -21,13 +21,11 @@ class MoviesController < ApplicationController
     end
     
     if params[:ratings]
-      @ratings_filter = params[:ratings].keys
+      @filter_rating = params[:ratings].keys
+    elsif session[:ratings]
+      @filter_rating = session[:ratings]
     else
-      if session[:ratings]
-        @ratings_filter = session[:ratings]
-      else
-        @ratings_filter = @all_ratings
-      end
+      @filter_rating = @all_ratings
     end
     
     if @sort!=session[:sort]
@@ -38,7 +36,7 @@ class MoviesController < ApplicationController
       session[:ratings] = @ratings_filter
     end
     
-    @movies = @movies.where('rating in (?)', @ratings_filter)
+    @movies = @movies.where('rating in (?)', @filter_rating)
     
   end
   
