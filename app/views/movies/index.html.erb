@@ -14,11 +14,11 @@
 <%#  Part 1: %>
 
 <table class="table table-striped col-md-12" id="movies">
-  <thead>nrnr
+  <thead>
     <tr>
       <th> <span class = "<%= 'hilite' if @sort == 'title'%>", :id="title_header"><%= link_to "Movie Title", movies_path(:sort => 'title') %> </span></th>
-      <th> Rating</th>tnftnrtntnrt
-      <th> <span class = ( "hilite" if @sort == 'release_date'), :id= "release_date_header"><%= link_to "Release Date", movies_path(:sort => 'release_date') %> </span></th>
+      <th> Rating</th>
+      <th> <span class = "<%= 'hilite' if @sort == 'release_date'%>", :id= "release_date_header"><%= link_to "Release Date", movies_path(:sort => 'release_date') %> </span></th>
       <th>More Info</th>
     </tr>
   </thead>
