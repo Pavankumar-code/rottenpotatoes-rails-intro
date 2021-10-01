@@ -16,13 +16,9 @@ class MoviesController < ApplicationController
       @sort = session[:sort_by]
     end
     
-    if @sort == 'title'
+    if @sort 
       @movies = @movies.order(@sort)
-      @sort_title = 'hilite'    
-    elsif @sort == 'release_date'
-      @movies = @movies.order(@sort)
-      @sort_release = 'hilite'
-    end
+ 
     
     if params[:ratings]
       @ratings_filter = params[:ratings].keys
