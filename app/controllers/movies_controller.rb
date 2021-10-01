@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       @sort = session[:sort_by]
     end
     
-    if @sort == 'title'
+    if @sort
       @movies = @movies.order(@sort)
     end
     
